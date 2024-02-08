@@ -1,4 +1,4 @@
-import { coors } from "../helper/geolocal.js";
+//import { coors } from "../helper/geolocal.js";
 
 export function Location() {
   const $p = document.createElement("p");
@@ -8,9 +8,9 @@ export function Location() {
   // const coordenadas = geolocal();
   // let position = coordenadas();
 
-  let data = coors;
+  //let data = coors;
 
-  console.log(`Latitud: ${coors}`);
+  // console.log(`Latitud: ${coors}`);
 
   $p.innerHTML = `
   <h2>Mexico City, cdmx</h2>

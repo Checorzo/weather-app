@@ -3,5 +3,6 @@ export function Loader() {
   $loader.src = "app/assets/loader.svg";
   $loader.alt = "Cargando...";
   $loader.classList.add("loader");
+  $loader.id = "loader";
   return $loader;
 }

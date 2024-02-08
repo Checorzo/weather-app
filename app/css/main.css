@@ -43,4 +43,27 @@ a:active {
 
 .grid {
   display: grid;
+}
+
+#header {
+  width: 80%;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.ubication-section {
+  display: flex;
+  justify-content: space-between;
+}
+.ubication-section spam {
+  display: block;
+  padding-top: 8px;
+}
+.ubication-section spam:hover {
+  cursor: pointer;
+  color: hsl(240, 44%, 64%);
+}
+
+.update {
+  font-size: 10px;
 }/*# sourceMappingURL=main.css.map */
