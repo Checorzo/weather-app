@@ -8,7 +8,7 @@ Applicación para mostrar información acerca del pronoxtico del Tiempo
 
 ## Mobile
 
-![Mobile Weather App] (./app//assets/mobile/mobile-weather-app.png "Mobile Weather App")
+![Mobile Weather App](./app//assets/mobile/mobile-weather-app.png "Mobile Weather App")
 
 ## Requerimientos
 
@@ -119,3 +119,13 @@ Toda la información metereológica será obtenida del sitio [Open-Meteo](https:
 $ curl "https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&current=temperature_2m,wind_speed_10m&hourly=temperature_2m,relative_humidity_2m,wind_speed_10m"
 
 ```
+
+### Nubosidad
+
+Dependiendo de la fracción de cielo que ocupen las nubes, dividido el cielo en octavos, se definen los siguientes términos:
+
+    Despejado o poco nuboso: [0,1/8] 0% - 12.4%
+    Parcialmente nuboso: (1/8,4/8] 12.5% - 49%
+    Nuboso: (4/8,5/8] 50% - 62.5%
+    Muy nuboso: (5/8,7/8] 62.6% - 87.4%
+    Cubierto: (7/8,8/8] 87.5% - 100%

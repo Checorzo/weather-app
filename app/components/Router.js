@@ -1,38 +1,29 @@
-import { Header } from "./Header.js";
+import { getGeo } from "../helper/geolocal.js";
+import { CardWeather } from "./CardWeather.js";
+import { Main } from "./Main.js";
 
 const $h2 = document.createElement("h2"),
-  $spam = document.createElement("spam");
+  $span = document.createElement("span");
+
 export async function Router() {
-  $spam.classList.add("update");
-  $spam.textContent = "Actualizar Ubicacinon";
+  $span.classList.add("update");
+  $span.textContent = "Actualizar Ubicacinon";
   $h2.id = "ubication-name";
   $h2.classList.add("ubication");
-  // if (!navigator.geolocation) {
-  //   document.getElementById(
-  //     "ubication-section"
-  //   ).innerHTML = `<h2>Su navegador no soporta geolocalización</h2>`;
-  //   return;
-  // }
+
   if (!localStorage.getItem("latitude") && !localStorage.getItem("longitude")) {
     console.log("Guardando infomracion en localstorage...");
-    const { latitude, longitude } = await getData();
-    // console.log(latitude, longitude);
-    localStorage.setItem("latitude", await latitude);
-    localStorage.setItem("longitude", await longitude);
+    await getGeo();
   }
   let latitude = localStorage.getItem("latitude"),
     longitude = localStorage.getItem("longitude");
 
   if (latitude && longitude) await getUbication(latitude, longitude);
+  const weather = await getWeather(latitude, longitude);
+  const card = await CardWeather(weather);
+  console.log(card);
+  document.getElementById("main-container").appendChild(card);
 }
-
-const geo = new Promise((resuelve, error) => {
-  navigator.geolocation.getCurrentPosition(resuelve, error, {
-    enableHighAccuracy: true,
-    timeout: 30000,
-    maximumAge: 2000,
-  });
-});
 
 async function getUbication(latitude, longitude) {
   try {
@@ -43,9 +34,9 @@ async function getUbication(latitude, longitude) {
       { city, suburb } = json.features
         ? json.features[0].properties.address
         : { city: "desconocido", suburb: "desconicido" };
-    $h2.innerText = `${city}, ${suburb}`;
+    $h2.innerText = `${suburb}, ${city}`;
     document.getElementById("ubication-section").appendChild($h2);
-    document.getElementById("ubication-section").appendChild($spam);
+    document.getElementById("ubication-section").appendChild($span);
 
     // console.log(`ciudad: ${city}, Alcaldia: ${suburb}`);
   } catch (err) {
@@ -53,15 +44,16 @@ async function getUbication(latitude, longitude) {
   }
 }
 
-async function getData() {
+async function getWeather(latitude, longitude) {
   try {
-    const pos = await geo;
-    // console.log(coords);
-    if (!pos) throw new Error(pos);
-    else return pos.coords;
-
-    return coords ? coords : null;
+    const res = await fetch(
+        `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,relative_humidity_2m,wind_speed_10m,precipitation,cloud_cover,wind_speed_10m,is_day&timezone=auto`
+      ),
+      json = await res.json();
+    console.log(json);
+    return json;
   } catch (error) {
     console.log(error);
   }
 }
+// &hourly=temperature_2m,relative_humidity_2m,wind_speed_10m,is_day,cloud_cover,precipitation_probability&forecast_days=7

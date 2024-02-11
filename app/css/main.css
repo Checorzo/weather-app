@@ -41,29 +41,37 @@ a:active {
   padding: 0;
 }
 
-.grid {
-  display: grid;
+#root {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
-
-#header {
-  width: 80%;
+#root #header {
   text-align: center;
+}
+#root #header > h1 {
+  text-align: center;
+}
+#root .loader {
+  width: 40px;
+  height: 40px;
+  align-self: center;
+}
+#root .ubication-section {
+  max-width: 720px;
+  display: flex;
+  justify-content: space-evenly;
   margin: 0 auto;
 }
-
-.ubication-section {
-  display: flex;
-  justify-content: space-between;
-}
-.ubication-section spam {
+#root .ubication-section span {
   display: block;
-  padding-top: 8px;
+  padding-top: 10px;
 }
-.ubication-section spam:hover {
+#root .ubication-section span:hover {
   cursor: pointer;
   color: hsl(240, 44%, 64%);
 }
-
-.update {
+#root .update {
   font-size: 10px;
 }/*# sourceMappingURL=main.css.map */
