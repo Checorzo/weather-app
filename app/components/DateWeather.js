@@ -23,7 +23,8 @@ export function DateWeather(props) {
     if (i === time.getDay()) day = el;
   });
 
-  hour = `${time.getHours() - 12}`;
+  hour = time.getHours();
+  if (hour > 12) hour = hour - 12;
   minutes = time.getMinutes() === 0 ? "00" : time.getMinutes();
   time = `${hour}:${minutes} PM `;
   console.log(props);

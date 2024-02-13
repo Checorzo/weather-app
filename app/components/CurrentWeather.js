@@ -25,9 +25,9 @@ export function CurrentWeather(props) {
     <sup class="fahrenheit inactive">°F</sup>
   </p>
   <ul>
-    <li>Precipitation: ${precipitation}% </li>
-    <li>Humidity: ${relative_humidity_2m}%</li>
-    <li>Wind: ${wind_speed_10m} km/h</li>
+    <li>Precipitación: ${precipitation}% </li>
+    <li>Humedad: ${relative_humidity_2m}%</li>
+    <li>Viento: ${wind_speed_10m} km/h</li>
   </ul>
   `;
 

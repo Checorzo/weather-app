@@ -1,13 +1,11 @@
 import { getGeo } from "../helper/geolocal.js";
 import { CardWeather } from "./CardWeather.js";
-import { Main } from "./Main.js";
-
 const $h2 = document.createElement("h2"),
   $span = document.createElement("span");
 
 export async function Router() {
   $span.classList.add("update");
-  $span.textContent = "Actualizar Ubicacinon";
+  $span.textContent = "Actualizar Ubicación";
   $h2.id = "ubication-name";
   $h2.classList.add("ubication");
 
@@ -32,14 +30,16 @@ async function getUbication(latitude, longitude) {
         `https://nominatim.openstreetmap.org/reverse?format=geojson&lat=${latitude}&lon=${longitude}`
       ),
       json = await res.json(),
-      { city, suburb } = json.features
+      address = json.features
         ? json.features[0].properties.address
-        : { city: "desconocido", suburb: "desconicido" };
-    $h2.innerText = `📍${suburb}, ${city}`;
+        : `Sin ubicación`;
+
+    console.log(json);
+    $h2.innerText = `📍${address.suburb ? address.suburb : address.town}, ${
+      address.city ? address.city : address.state
+    }`;
     document.getElementById("ubication-section").appendChild($h2);
     document.getElementById("ubication-section").appendChild($span);
-
-    // console.log(`ciudad: ${city}, Alcaldia: ${suburb}`);
   } catch (err) {
     console.log(err);
   }
@@ -57,4 +57,3 @@ async function getWeather(latitude, longitude) {
     console.log(error);
   }
 }
-// &hourly=temperature_2m,relative_humidity_2m,wind_speed_10m,is_day,cloud_cover,precipitation_probability&forecast_days=7

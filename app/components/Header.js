@@ -1,4 +1,3 @@
-import { setUbication } from "../helper/observer.js";
 export function Header(props) {
   const $header = document.createElement("header"),
     $section = document.createElement("section"),
