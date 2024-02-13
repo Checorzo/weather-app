@@ -7,7 +7,7 @@ export async function CardWeather(props) {
     dateWeather = DateWeather(props.current);
   $section.classList.add("current-weather-container");
 
-  console.log(props);
+  // console.log(props);
 
   $section.appendChild(currentWeather);
   $section.appendChild(dateWeather);

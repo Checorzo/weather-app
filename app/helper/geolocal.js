@@ -8,7 +8,7 @@ export async function getGeo() {
     if (!coords) throw new Error(coords);
     else return coords;
   } catch (error) {
-    console.log(`Error: ${error.message}`);
+    // console.log(`Error: ${error.message}`);
   }
 }
 const geo = new Promise((resolver, rechazar) => {

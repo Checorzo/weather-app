@@ -10,7 +10,7 @@ export async function Router() {
   $h2.classList.add("ubication");
 
   if (!localStorage.getItem("latitude") && !localStorage.getItem("longitude")) {
-    console.log("Guardando infomracion en localstorage...");
+    // console.log("Guardando infomracion en localstorage...");
     await getGeo();
   }
   let latitude = localStorage.getItem("latitude"),
@@ -19,7 +19,7 @@ export async function Router() {
   if (latitude && longitude) await getUbication(latitude, longitude);
   const weather = await getWeather(latitude, longitude);
   const card = await CardWeather(weather);
-  console.log(card);
+  // console.log(card);
   document.getElementById("main-container").appendChild(card);
   document.getElementById("loader").style.display = "none";
 }
@@ -34,14 +34,14 @@ async function getUbication(latitude, longitude) {
         ? json.features[0].properties.address
         : `Sin ubicación`;
 
-    console.log(json);
+    // console.log(json);
     $h2.innerText = `📍${address.suburb ? address.suburb : address.town}, ${
       address.city ? address.city : address.state
     }`;
     document.getElementById("ubication-section").appendChild($h2);
     document.getElementById("ubication-section").appendChild($span);
   } catch (err) {
-    console.log(err);
+    // console.log(err);
   }
 }
 
@@ -51,9 +51,9 @@ async function getWeather(latitude, longitude) {
         `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,relative_humidity_2m,wind_speed_10m,precipitation,cloud_cover,wind_speed_10m,is_day&timezone=auto`
       ),
       json = await res.json();
-    console.log(json);
+    // console.log(json);
     return json;
   } catch (error) {
-    console.log(error);
+    // console.log(error);
   }
 }

@@ -27,7 +27,7 @@ export function DateWeather(props) {
   if (hour > 12) hour = hour - 12;
   minutes = time.getMinutes() === 0 ? "00" : time.getMinutes();
   time = `${hour}:${minutes} PM `;
-  console.log(props);
+  // console.log(props);
   $divDate.innerHTML = `
   <p>
     <spam>${day}</spam>
