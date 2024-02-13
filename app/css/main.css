@@ -1,3 +1,4 @@
+@import url("../css/weather-icons.min.css");
 html {
   box-sizing: border-box;
   font-size: 100%;
@@ -15,6 +16,10 @@ body {
   font-family: "Open Sans", sans-serif;
   background-color: hsl(0, 0%, 11%);
   color: hsl(0, 0%, 100%);
+}
+
+li {
+  list-style: none;
 }
 
 h1,
@@ -41,37 +46,117 @@ a:active {
   padding: 0;
 }
 
-#root {
-  margin: 0 auto;
+.flex {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+  gap: 2em;
+  margin: 0 auto;
+  width: min(100% - 40px, 1000px);
 }
-#root #header {
+.flex #header {
+  margin-top: 3em;
+  width: inherit;
+}
+.flex #header #ubication-section {
+  margin-top: 1em;
+  display: flex;
+  flex-direction: column;
+}
+@media (min-width: 43.75em) {
+  .flex #header #ubication-section {
+    flex-direction: row;
+  }
+}
+.flex main {
+  width: inherit;
+}
+.flex main .current-weather-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+  justify-content: space-evenly;
+}
+.flex main .current-weather-container .current-weather__weather {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+  align-items: normal;
+  gap: 0;
+}
+.flex main .current-weather-container .current-weather__weather p {
+  font-size: 1.5em;
+}
+.flex main .current-weather-container .current-weather__weather p span {
+  font-size: 2em;
+}
+.flex main .current-weather-container .units > sup {
+  text-decoration: underline;
+}
+.flex main .current-weather-container .units {
+  width: 100px;
+}
+.flex main .current-weather-container p sup.pipe {
+  text-decoration: none;
+}
+.flex main .current-weather-container p sup.inactive {
+  color: gray;
+  text-decoration: none;
+}
+.flex main .current-weather-container p sup.inactive:hover {
+  cursor: pointer;
+}
+.flex main .current-weather-container ul {
+  width: 150px;
+}
+.flex main .current-weather-container ul li {
+  font-size: 0.8em;
+}
+.flex main .current-weather__timestamp p {
+  width: 120px;
+}
+@media (max-width: 56.24875em) {
+  .flex main .current-weather-container {
+    flex-direction: column-reverse;
+  }
+  .flex main .current-weather-container .current-weather__weather {
+    flex-direction: column;
+  }
+}
+
+#header {
   text-align: center;
 }
-#root #header > h1 {
+#header > h1 {
   text-align: center;
 }
-#root .loader {
+
+.loader {
   width: 40px;
   height: 40px;
   align-self: center;
 }
-#root .ubication-section {
+
+.ubication-section {
   max-width: 720px;
   display: flex;
   justify-content: space-evenly;
   margin: 0 auto;
 }
-#root .ubication-section span {
+.ubication-section span {
   display: block;
   padding-top: 10px;
 }
-#root .ubication-section span:hover {
+.ubication-section span:hover {
   cursor: pointer;
   color: hsl(240, 44%, 64%);
 }
-#root .update {
+
+.update {
   font-size: 10px;
 }/*# sourceMappingURL=main.css.map */

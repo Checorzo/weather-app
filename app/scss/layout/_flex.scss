@@ -1,0 +1,81 @@
+@use "../util" as u;
+@mixin flexCenter($direction) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+}
+
+.flex {
+  @include flexCenter(column);
+  margin: 0 auto;
+  width: min(100% - 40px, 1000px);
+  & #header {
+    margin-top: 3em;
+    width: inherit;
+    & #ubication-section {
+      margin-top: 1em;
+      display: flex;
+      flex-direction: column;
+      @include u.breakpoint(medium) {
+        flex-direction: row;
+      }
+    }
+  }
+  & main {
+    width: inherit;
+    .current-weather-container {
+      @include flexCenter(row);
+      justify-content: space-evenly;
+
+      .current-weather__weather {
+        @include flexCenter(row);
+        align-items: normal;
+        gap: 0;
+
+        p {
+          font-size: 1.5em;
+          span {
+            font-size: 2em;
+          }
+        }
+      }
+      .units > sup {
+        text-decoration: underline;
+      }
+      .units {
+        width: 100px;
+      }
+      p sup.pipe {
+        text-decoration: none;
+      }
+      p sup.inactive {
+        color: gray;
+        text-decoration: none;
+      }
+      p sup.inactive:hover {
+        cursor: pointer;
+      }
+      ul {
+        width: 150px;
+      }
+      ul li {
+        font-size: 0.8em;
+      }
+    }
+    .current-weather__timestamp {
+      p {
+        width: 120px;
+      }
+    }
+    @include u.breakpoint-down(medium) {
+      .current-weather-container {
+        flex-direction: column-reverse;
+        .current-weather__weather {
+          flex-direction: column;
+        }
+      }
+    }
+  }
+}

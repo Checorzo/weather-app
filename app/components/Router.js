@@ -23,6 +23,7 @@ export async function Router() {
   const card = await CardWeather(weather);
   console.log(card);
   document.getElementById("main-container").appendChild(card);
+  document.getElementById("loader").style.display = "none";
 }
 
 async function getUbication(latitude, longitude) {
@@ -34,7 +35,7 @@ async function getUbication(latitude, longitude) {
       { city, suburb } = json.features
         ? json.features[0].properties.address
         : { city: "desconocido", suburb: "desconicido" };
-    $h2.innerText = `${suburb}, ${city}`;
+    $h2.innerText = `📍${suburb}, ${city}`;
     document.getElementById("ubication-section").appendChild($h2);
     document.getElementById("ubication-section").appendChild($span);
 

@@ -1,3 +1,4 @@
+import { isCloudy } from "../helper/cloudCover.js";
 export function DateWeather(props) {
   const $divDate = document.createElement("div");
   $divDate.classList.add("current-weather__timestamp");
@@ -10,7 +11,11 @@ export function DateWeather(props) {
     "Viernes",
     "Sabado",
   ];
-  let { time } = props;
+
+  let { cloud_cover, is_day, time } = props;
+
+  let { sky } = isCloudy(cloud_cover, is_day);
+  // if (sky === "Sunny" && is_day === 0) sky = "Clear";
 
   time = new Date(time);
   let day, hour, minutes;
@@ -26,6 +31,8 @@ export function DateWeather(props) {
   <p>
     <spam>${day}</spam>
     <spam>${time}</spam>
+    <spam>${sky}</spam>
+
   </p>`;
 
   return $divDate;
