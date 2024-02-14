@@ -118,7 +118,7 @@ a:active {
   font-size: 0.8em;
 }
 .flex main .current-weather__timestamp p {
-  width: 120px;
+  width: 150px;
 }
 @media (max-width: 56.24875em) {
   .flex main .current-weather-container {

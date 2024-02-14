@@ -18,15 +18,21 @@ export function DateWeather(props) {
   // if (sky === "Sunny" && is_day === 0) sky = "Clear";
 
   time = new Date(time);
-  let day, hour, minutes;
+  let day,
+    hour,
+    minutes,
+    hourUnit = "AM";
   weekDays.forEach((el, i) => {
     if (i === time.getDay()) day = el;
   });
 
   hour = time.getHours();
-  if (hour > 12) hour = hour - 12;
+  if (hour > 12) {
+    hour = hour - 12;
+    hourUnit = "PM";
+  }
   minutes = time.getMinutes() === 0 ? "00" : time.getMinutes();
-  time = `${hour}:${minutes} PM `;
+  time = `${hour}:${minutes} ${hourUnit}`;
   // console.log(props);
   $divDate.innerHTML = `
   <p>
