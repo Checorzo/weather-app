@@ -22,7 +22,7 @@ export function isCloudy(cloud, isDay) {
     if (isDay) {
       icon = "wi wi-day-overcast";
     } else {
-      icon = "wi-night-partly-cloudy";
+      icon = "wi wi-night-partly-cloudy";
     }
   } else if (cloud < 87.5) {
     sky = "Mostly cloudy";
