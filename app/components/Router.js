@@ -35,9 +35,17 @@ async function getUbication(latitude, longitude) {
         : `Sin ubicación`;
 
     // console.log(json);
-    $h2.innerText = `📍${address.suburb ? address.suburb : address.town}, ${
-      address.city ? address.city : address.state
-    }`;
+    $h2.innerText = `📍${
+      address.suburb
+        ? address.suburb
+        : address.village
+        ? address.village
+        : address.town
+        ? address.town
+        : address.borough
+        ? address.borough
+        : address.city
+    }, ${address.state ? address.state : address.city}`;
     document.getElementById("ubication-section").appendChild($h2);
     document.getElementById("ubication-section").appendChild($span);
   } catch (err) {
